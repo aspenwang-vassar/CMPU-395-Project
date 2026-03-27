@@ -13,7 +13,6 @@ Author: Aspen Wang
 """
 
 import os
-import sys
 import json
 import time
 import requests
@@ -25,12 +24,9 @@ import fiona
 from pathlib import Path
 from typing import Tuple, List, Dict, Optional
 from datetime import datetime
-from urllib.parse import urlencode
 import traceback
 
-import torch
-import torch.nn as nn
-from torchvision import models, transforms
+
 from PIL import Image
 from io import BytesIO
 from dotenv import load_dotenv

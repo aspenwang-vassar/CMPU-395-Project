@@ -19,15 +19,12 @@ Output:
 Author: Aspen Wang
 """
 
-import os
-import sys
 import logging
 import pandas as pd
 import geopandas as gpd
 import numpy as np
 import fiona
 from pathlib import Path
-from typing import Tuple, List, Dict
 import traceback
 
 # ============================================================================
