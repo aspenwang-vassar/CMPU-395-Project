@@ -9,7 +9,7 @@ A modular pipeline that:
 4. Downloads Street View images
 
 
-Author: Data Science Pipeline
+Author: Aspen Wang
 """
 
 import os
@@ -56,7 +56,7 @@ class Config:
     
     # Original data sources (used by data_preprocessing.py)
     SEDA_CSV = DATA_DIR / "seda_geodist_annualsub_cs_6.0.csv"  # SEDA district-level data
-    SHAPEFILE = DATA_DIR / "schooldistricttl25_tidy.shp"  # Tiger Line school districts
+    SHAPEFILE = DATA_DIR / "schooldistricttl25_tidy.shp"  # school districts
     
     # Output files
     IMAGES_DIR = DATA_DIR / "streetview_images"
@@ -66,8 +66,7 @@ class Config:
     DISTRICT_COVERAGE_CSV = DATA_DIR / "district_image_coverage.csv"
     COVERAGE_REPORT_JSON = DATA_DIR / "district_image_coverage.json"
     DOWNLOADED_IMAGES_CSV = DATA_DIR / "downloaded_images.csv"
-    EMBEDDINGS_CSV = DATA_DIR / "district_embeddings.csv"
-    MERGED_DATASET_CSV = DATA_DIR / "final_dataset.csv"
+
     
     # API
     GOOGLE_API_KEY = os.getenv("GOOGLE_STREET_VIEW_API_KEY", "YOUR_API_KEY_HERE")
