@@ -7,9 +7,7 @@ A modular pipeline that:
 2. Samples points within districts
 3. Queries Street View metadata API
 4. Downloads Street View images
-5. Extracts visual features using ResNet50
-6. Aggregates features by district
-7. Builds the imagery dataset for downstream modeling
+
 
 Author: Data Science Pipeline
 """
@@ -92,7 +90,7 @@ class Config:
     SUBGROUP_COL = "subgroup"  # Subgroup identifier
     AGGREGATE_SUBGROUP = "all"  # Filter to aggregate (all groups) or specific subgroup
     OUTCOME_COLS = [
-        "cs_mn_avg_mth_eb",  # Math outcomes (EB = English Bilingual?)
+        "cs_mn_avg_mth_eb",  # Math outcomes
         "cs_mn_avg_rla_eb"   # Reading/ELA outcomes
     ]
     OUTCOME_SE_COLS = [
@@ -152,10 +150,6 @@ ensure_fiona_compatibility()
 
 # ============================================================================
 # 1. DATA LOADING
-# ============================================================================
-
-# ============================================================================
-# 1. LOAD PREPROCESSED DATA
 # ============================================================================
 
 def load_preprocessed_data() -> Tuple[gpd.GeoDataFrame, pd.DataFrame]:
@@ -740,199 +734,6 @@ def download_all_images(valid_df: pd.DataFrame, api_key: str) -> pd.DataFrame:
     logger.info(f"Successfully downloaded {success_count} images")
     
     return valid_df
-
-
-# ============================================================================
-# 7. FEATURE EXTRACTION
-# ============================================================================
-
-class FeatureExtractor:
-    """Extract features using pretrained ResNet50"""
-    
-    def __init__(self, device: str = "cuda" if torch.cuda.is_available() else "cpu"):
-        self.device = device
-        self.model = self._load_model()
-        self.transform = self._get_transform()
-    
-    def _load_model(self) -> nn.Module:
-        """Load pretrained ResNet50 and remove classification layer"""
-        logger.info(f"Loading ResNet50 on device: {self.device}")
-        
-        model = models.resnet50(pretrained=True)
-        
-        # Remove final classification layer
-        model = nn.Sequential(*list(model.children())[:-1])
-        model.to(self.device)
-        model.eval()
-        
-        return model
-    
-    def _get_transform(self) -> transforms.Compose:
-        """Get image transformation pipeline"""
-        return transforms.Compose([
-            transforms.Resize((224, 224)),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean=[0.485, 0.456, 0.406],
-                std=[0.229, 0.224, 0.225]
-            )
-        ])
-    
-    def extract_features(self, image_path: str) -> Optional[np.ndarray]:
-        """Extract feature vector from image"""
-        try:
-            img = Image.open(image_path).convert("RGB")
-            img_tensor = self.transform(img).unsqueeze(0).to(self.device)
-            
-            with torch.no_grad():
-                features = self.model(img_tensor)
-            
-            features = features.squeeze().cpu().numpy()
-            return features
-        
-        except Exception as e:
-            logger.warning(f"Feature extraction error for {image_path}: {e}")
-            return None
-
-
-def extract_features_for_all_images(images_df: pd.DataFrame) -> pd.DataFrame:
-    """Extract features for all images"""
-    logger.info(f"Extracting features for {len(images_df)} images")
-
-    if images_df.empty:
-        logger.warning("No images available for feature extraction.")
-        return pd.DataFrame(
-            columns=[Config.DISTRICT_ID_COL, "image_path", "embedding"]
-        )
-    
-    extractor = FeatureExtractor()
-    
-    embeddings = []
-    
-    for idx, row in images_df.iterrows():
-        if idx % 50 == 0:
-            logger.info(f"Extracted features for {idx}/{len(images_df)} images")
-        
-        features = extractor.extract_features(row["image_path"])
-        
-        if features is not None:
-            embeddings.append({
-                Config.DISTRICT_ID_COL: row[Config.DISTRICT_ID_COL],
-                "image_path": row["image_path"],
-                "embedding": features
-            })
-    
-    embeddings_df = pd.DataFrame(embeddings)
-    logger.info(f"Successfully extracted {len(embeddings_df)} feature vectors")
-    
-    return embeddings_df
-
-
-# ============================================================================
-# 8. AGGREGATION
-# ============================================================================
-
-def aggregate_embeddings(embeddings_df: pd.DataFrame) -> pd.DataFrame:
-    """Aggregate embeddings to district level by averaging"""
-    logger.info("Aggregating embeddings to district level")
-
-    if embeddings_df.empty:
-        raise ValueError(
-            "No image embeddings were generated. This usually means Street View "
-            "metadata returned no valid panoramas for the sampled points."
-        )
-    
-    # Convert embedding list to array
-    embeddings_df["embedding_array"] = embeddings_df["embedding"].apply(
-        lambda x: np.array(x) if isinstance(x, list) else x
-    )
-    
-    # Group by district and average
-    district_embeddings = embeddings_df.groupby(Config.DISTRICT_ID_COL).apply(
-        lambda x: np.mean(np.stack(x["embedding_array"]), axis=0)
-    )
-    
-    # Convert to dataframe
-    embedding_matrix = np.vstack(district_embeddings.values)
-    district_df = pd.DataFrame(
-        embedding_matrix,
-        index=district_embeddings.index,
-        columns=[f"feat_{i}" for i in range(embedding_matrix.shape[1])]
-    )
-    district_df = district_df.reset_index()
-    district_df = district_df.rename(columns={"index": Config.DISTRICT_ID_COL})
-    image_counts = (
-        embeddings_df.groupby(Config.DISTRICT_ID_COL)
-        .size()
-        .rename("num_images")
-        .reset_index()
-    )
-    district_df = district_df.merge(
-        image_counts,
-        on=Config.DISTRICT_ID_COL,
-        how="left"
-    )
-    
-    logger.info(f"Created {len(district_df)} district-level embeddings")
-    
-    # Save intermediate CSV
-    district_df.to_csv(Config.EMBEDDINGS_CSV, index=False)
-    logger.info(f"Saved embeddings to {Config.EMBEDDINGS_CSV}")
-    
-    return district_df
-
-
-# ============================================================================
-# 9. MERGE WITH OUTCOMES
-# ============================================================================
-
-def merge_embeddings_with_outcomes(
-    embeddings_df: pd.DataFrame,
-    seda_df: pd.DataFrame
-) -> pd.DataFrame:
-    """
-    Merge district embeddings with SEDA outcomes and metadata.
-    
-    Includes:
-    - District ID and name
-    - Both outcome variables (math and ELA)
-    - Standard errors for estimates
-    - All 2048 embedding dimensions
-    """
-    logger.info("Merging embeddings with SEDA outcomes")
-    
-    # Select relevant columns from SEDA
-    seda_cols = [Config.DISTRICT_ID_COL]
-    if Config.DISTRICT_NAME_COL in seda_df.columns:
-        seda_cols.append(Config.DISTRICT_NAME_COL)
-    seda_cols.extend(Config.OUTCOME_COLS)
-    if "year" in seda_df.columns:
-        seda_cols.append("year")
-    if "stateabb" in seda_df.columns:
-        seda_cols.append("stateabb")
-    # Add standard error columns if available
-    seda_cols.extend([col for col in Config.OUTCOME_SE_COLS if col in seda_df.columns])
-    
-    seda_subset = seda_df[seda_cols].drop_duplicates(subset=[Config.DISTRICT_ID_COL], keep="first")
-    
-    # Merge
-    merged = embeddings_df.merge(
-        seda_subset,
-        on=Config.DISTRICT_ID_COL,
-        how="inner"
-    )
-    
-    # Final validation
-    merged = merged.dropna(subset=Config.OUTCOME_COLS)
-    
-    logger.info(f"Final merged dataset: {len(merged)} districts × {len(merged.columns)} columns")
-    logger.info(f"Outcome columns: {Config.OUTCOME_COLS}")
-    
-    # Save final dataset
-    merged.to_csv(Config.MERGED_DATASET_CSV, index=False)
-    logger.info(f"Saved final dataset to {Config.MERGED_DATASET_CSV}")
-    
-    return merged
 
 
 # ============================================================================
