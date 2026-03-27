@@ -189,8 +189,46 @@ def resolve_outcome_columns(df: pd.DataFrame) -> None:
         "Configured outcome columns were unavailable; "
         f"falling back to {Config.OUTCOME_COLS}"
     )
+def prune_seda_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Keep only essential columns for modeling and drop the rest.
+    """
+    logger.info("Pruning unnecessary SEDA columns...")
 
+    # Always keep these if available
+    keep_cols = [
+        "sedalea",
+        "sedaleaname",
+        "year",
+        "stateabb",
 
+        # Outcome (will adjust below)
+        "cs_mn_avg_eb",
+        "cs_mn_avg_eb_se",
+
+        # Reliability
+        "tot_asmts",
+        "cellcount",
+        "mn_asmts",
+        "flag_estasmt"
+    ]
+
+    # If using math/RLA separately, keep those instead
+    for col in [
+        "cs_mn_avg_mth_eb", "cs_mn_avg_rla_eb",
+        "cs_mn_avg_mth_eb_se", "cs_mn_avg_rla_eb_se"
+    ]:
+        if col in df.columns:
+            keep_cols.append(col)
+
+    # Only keep columns that actually exist
+    keep_cols = [col for col in keep_cols if col in df.columns]
+
+    logger.info(f"Keeping {len(keep_cols)} columns: {keep_cols}")
+
+    df = df[keep_cols].copy()
+
+    return df
 def load_shapefile(filepath: Path) -> gpd.GeoDataFrame:
     """
     Load school district shapefile (Tiger Line Files).
@@ -386,6 +424,7 @@ def run_preprocessing():
         logger.info("\n[STEP 1] Loading SEDA data...")
         seda_df = load_seda_data(Config.SEDA_CSV)
         resolve_outcome_columns(seda_df)
+        seda_df = prune_seda_columns(seda_df)
         
         # Step 2: Load shapefile
         logger.info("\n[STEP 2] Loading shapefile...")
