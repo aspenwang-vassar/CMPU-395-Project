@@ -1,13 +1,12 @@
 """
-Data Preprocessing Module for School District Pipeline
+Data Preprocessing Pipeline for School District Analysis
 =======================================================
 
-This module handles all data loading, validation, and district sampling
-with a fixed random seed for reproducibility.
+This pipeline preprocesses and samples the school district information for downstream analysis
 
 Workflow:
 1. Load SEDA academic outcome data
-2. Load school district shapefiles (Tiger Line)
+2. Load school district shapefiles
 3. Merge data on district ID
 4. Sample districts with fixed seed
 5. Save preprocessed data for downstream analysis
