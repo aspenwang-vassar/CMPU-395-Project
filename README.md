@@ -31,4 +31,5 @@ The default script-style settings include:
 
 If you do not already have an image metadata CSV, set `Config.AUTO_GENERATE_METADATA = True` and the pipeline will scan `Config.IMAGE_ROOT`, parse district IDs from filenames like `3304040.0_2125.jpg`, and save a generated metadata file before training.
 
-A Colab-ready notebook with zip upload, extraction, and automatic repo-root detection is available at [colab_district_quality_pipeline.ipynb](/Users/aspen/PycharmProjects/CMPU-395-Project/colab_district_quality_pipeline.ipynb).
+For the current repo data, the best default outcome source is [sampled_districts.csv](/Users/aspen/PycharmProjects/CMPU-395-Project/data/sampled_districts.csv) with `Config.TARGET_COLUMN = "cs_mn_avg_eb"`, because it overlaps with the sampled Street View districts. The raw [seda_geodist_annualsub_cs_6.0.csv](/Users/aspen/PycharmProjects/CMPU-395-Project/data/seda_geodist_annualsub_cs_6.0.csv) file in this repo only overlaps with a few of the current image districts.
+

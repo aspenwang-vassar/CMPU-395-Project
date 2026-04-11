@@ -48,12 +48,15 @@ class Config:
     IMAGE_METADATA_PATH = DATA_DIR / "your_image_metadata.csv"
     AUTO_GENERATE_METADATA = True
     GENERATED_METADATA_PATH = DATA_DIR / "generated_image_metadata.csv"
-    DISTRICT_OUTCOME_PATH = DATA_DIR / "seda_geodist_annualsub_cs_6.0.csv"
+    DISTRICT_OUTCOME_PATH = DATA_DIR / "sampled_districts.csv"
     IMAGE_ROOT = DATA_DIR / "streetview_images"
 
     METADATA_ID_COLUMN = "sedalea"
     OUTCOME_ID_COLUMN = "sedalea"
-    TARGET_COLUMN = "cs_mn_avg_mth_eb"
+    TARGET_COLUMN = "cs_mn_avg_eb"
+    OUTCOME_YEAR = 2019
+    OUTCOME_SUBGROUP = "all"
+    OUTCOME_SUBCAT = "all"
 
     MIN_IMAGES_PER_DISTRICT = 20
     BATCH_SIZE = 64
@@ -189,6 +192,9 @@ def load_data(
     target_column: str = DEFAULT_TARGET_COLUMN,
     min_images_per_district: Optional[int] = None,
     image_root: Optional[Path] = None,
+    outcome_year: Optional[int] = None,
+    outcome_subgroup: Optional[str] = None,
+    outcome_subcat: Optional[str] = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     LOGGER.info("Loading image metadata from %s", image_metadata_path)
     metadata_df = pd.read_csv(image_metadata_path)
@@ -202,6 +208,26 @@ def load_data(
 
     metadata_df = metadata_df.copy()
     outcomes_df = outcomes_df.copy()
+
+    if outcome_year is not None and "year" in outcomes_df.columns:
+        outcomes_df = outcomes_df[outcomes_df["year"] == outcome_year].copy()
+        LOGGER.info("Filtered outcomes to year=%s: %s rows remain", outcome_year, len(outcomes_df))
+
+    if outcome_subgroup is not None and "subgroup" in outcomes_df.columns:
+        outcomes_df = outcomes_df[outcomes_df["subgroup"].astype(str) == str(outcome_subgroup)].copy()
+        LOGGER.info(
+            "Filtered outcomes to subgroup=%s: %s rows remain",
+            outcome_subgroup,
+            len(outcomes_df),
+        )
+
+    if outcome_subcat is not None and "subcat" in outcomes_df.columns:
+        outcomes_df = outcomes_df[outcomes_df["subcat"].astype(str) == str(outcome_subcat)].copy()
+        LOGGER.info(
+            "Filtered outcomes to subcat=%s: %s rows remain",
+            outcome_subcat,
+            len(outcomes_df),
+        )
 
     metadata_df["district_id"] = normalize_district_ids(metadata_df[metadata_id_column])
     outcomes_df["district_id"] = normalize_district_ids(outcomes_df[outcome_id_column])
@@ -232,12 +258,14 @@ def load_data(
     metadata_df = metadata_df.sort_values(["district_id", "image_path"]).reset_index(drop=True)
     outcomes_df = outcomes_df.drop_duplicates(subset=["district_id"]).reset_index(drop=True)
 
+    overlap_count = metadata_df["district_id"].nunique()
     LOGGER.info(
         "Prepared %s image rows across %s districts after filtering",
         len(metadata_df),
         metadata_df["district_id"].nunique(),
     )
     LOGGER.info("Prepared %s district outcome rows", len(outcomes_df))
+    LOGGER.info("District overlap available for modeling: %s districts", overlap_count)
     return metadata_df, outcomes_df
 
 
@@ -539,7 +567,12 @@ def train_and_evaluate_models(
 
     feature_cols = embedding_columns()
     if modeling_df["district_id"].nunique() < 5:
-        raise ValueError("Need at least 5 districts after aggregation to train/evaluate models.")
+        raise ValueError(
+            "Need at least 5 districts after aggregation to train/evaluate models. "
+            f"Only found {modeling_df['district_id'].nunique()} districts after merging "
+            "district features with filtered outcomes. Check outcome year/subgroup/subcat "
+            "filters and district ID alignment."
+        )
 
     X = modeling_df[feature_cols].to_numpy(dtype=np.float32)
     y = modeling_df[target_column].to_numpy(dtype=np.float32)
@@ -644,6 +677,9 @@ def run_pipeline(
     save_pca_plot: bool = True,
     auto_generate_metadata: bool = False,
     generated_metadata_path: Optional[Path | str] = None,
+    outcome_year: Optional[int] = None,
+    outcome_subgroup: Optional[str] = None,
+    outcome_subcat: Optional[str] = None,
 ) -> pd.DataFrame:
     image_metadata_path = Path(image_metadata_path)
     district_outcome_path = Path(district_outcome_path)
@@ -682,6 +718,9 @@ def run_pipeline(
         target_column=target_column,
         min_images_per_district=min_images_per_district,
         image_root=image_root,
+        outcome_year=outcome_year,
+        outcome_subgroup=outcome_subgroup,
+        outcome_subcat=outcome_subcat,
     )
 
     encoder = build_resnet50_encoder(device=resolved_device)
@@ -730,6 +769,9 @@ def main() -> pd.DataFrame:
         save_pca_plot=Config.SAVE_PCA_PLOT,
         auto_generate_metadata=Config.AUTO_GENERATE_METADATA,
         generated_metadata_path=Config.GENERATED_METADATA_PATH,
+        outcome_year=Config.OUTCOME_YEAR,
+        outcome_subgroup=Config.OUTCOME_SUBGROUP,
+        outcome_subcat=Config.OUTCOME_SUBCAT,
     )
 
 

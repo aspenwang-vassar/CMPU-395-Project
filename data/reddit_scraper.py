@@ -26,10 +26,12 @@ matplotlib.use('Agg')
 
 # ── 1. LOAD DISTRICT DATA ────────────────────────────────────────────────────
 
-df = pd.read_csv("data/sampled_districts.csv")
+df = pd.read_csv("/Users/aspen/PycharmProjects/CMPU-395-Project/data/sampled_districts.csv")
 
 # Keep one row per district (drop duplicate years if any)
 df = df.drop_duplicates(subset=["sedalea"]).reset_index(drop=True)
+
+DATA_PATH = "/Users/aspen/PycharmProjects/CMPU-395-Project/data/"
 
 print(f"Loaded {len(df)} districts")
 print(df[["sedalea", "sedaleaname", "stateabb", "cs_mn_avg_eb"]].head())
@@ -121,6 +123,8 @@ all_rows = []
 failed_districts = []
 
 for i, row in df.iterrows():
+    # if i >=5:
+    #     break
     lea_id = row["sedalea"]
     name = row["sedaleaname"]
     state = row["stateabb"]
@@ -148,7 +152,7 @@ for i, row in df.iterrows():
 
 # Save raw data
 raw_df = pd.DataFrame(all_rows)
-raw_df.to_csv("data/reddit_raw.csv", index=False)
+raw_df.to_csv(f"{DATA_PATH}/reddit_raw.csv", index=False)
 print(f"\nSaved {len(raw_df)} total posts across {raw_df['sedalea'].nunique()} districts")
 print(f"Districts with no Reddit data: {len(failed_districts)}")
 
@@ -204,7 +208,7 @@ sentiment_df = (
     .reset_index()
 )
 
-sentiment_df.to_csv("data/reddit_sentiment.csv", index=False)
+sentiment_df.to_csv("/Users/aspen/PycharmProjects/CMPU-395-Project/data/reddit_sentiment.csv", index=False)
 print(f"\nSentiment scores computed for {len(sentiment_df)} districts")
 print(sentiment_df[["sedaleaname", "mean_sentiment", "post_count", "cs_mn_avg_eb"]].head(10))
 
@@ -250,7 +254,7 @@ SEDA Achievement Score Summary:
 """
     print(results_text)
 
-    with open("data/correlation_results.txt", "w") as f:
+    with open(f"{DATA_PATH}/correlation_results.txt", "w") as f:
         f.write(results_text)
 
     # ── 6. SCATTER PLOT ──────────────────────────────────────────────────────
@@ -274,7 +278,7 @@ SEDA Achievement Score Summary:
     ax.legend(fontsize=11)
     ax.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.savefig("data/sentiment_vs_achievement.png", dpi=150)
+    plt.savefig(f"{DATA_PATH}/sentiment_vs_achievement.png", dpi=150)
     print("Saved scatter plot to data/sentiment_vs_achievement.png")
 
 else:
