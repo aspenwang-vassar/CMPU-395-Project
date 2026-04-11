@@ -1,0 +1,27 @@
+
+CORRELATION RESULTS — Reddit Sentiment vs. SEDA Achievement Scores
+===================================================================
+Districts analyzed: 289
+Minimum posts per district: 3
+
+Pearson Correlation:
+  r = 0.0972
+  p = 0.0990
+  Not statistically significant (p >= 0.05)
+
+Spearman Correlation:
+  rho = 0.1039
+  p   = 0.0779
+  Not statistically significant (p >= 0.05)
+
+Sentiment Score Summary:
+  Mean:   -0.2196
+  Std:    0.1317
+  Min:    -0.5361
+  Max:    0.2006
+
+SEDA Achievement Score Summary:
+  Mean:   0.0004
+  Std:    0.3677
+  Min:    -0.9386
+  Max:    1.1500

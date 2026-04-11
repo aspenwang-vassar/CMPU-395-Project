@@ -3,7 +3,7 @@ __pycache__/
 *.py[codz]
 *$py.class
 .idea/
-
+.DS_Store/
 # C extensions
 *.so
 
@@ -208,10 +208,6 @@ marimo/_lsp/
 __marimo__/
 
 # Project data artifacts
-outputs/
-data/generated_image_metadata.csv
+
 data/reddit_raw.csv
-data/reddit_sentiment.csv
-data/correlation_results.txt
-data/sentiment_vs_achievement.png
 data/EDGE_SCHOOLDISTRICT_TL25_SY2425.shp
