@@ -1,0 +1,7 @@
+district_id,district_name,stateabb,num_valid_images,num_unique_panos,num_candidate_points,num_metadata_ok,num_zero_results,num_outside_district,num_duplicates,included_for_analysis
+1713240,East Peoria SD 86,IL,23,0,230,25,55,0,0,True
+3414220,Roosevelt Borough Public School District,NJ,18,0,230,18,62,0,0,True
+4216860,New Hope-Solebury SD,PA,28,0,230,28,52,0,0,True
+5504620,Lac du Flambeau #1 School District,WI,15,0,230,15,65,0,0,True
+608610,Chula Vista Elementary,CA,27,0,230,27,53,0,0,True
+900840,Colchester School District,CT,18,0,230,18,62,0,0,True

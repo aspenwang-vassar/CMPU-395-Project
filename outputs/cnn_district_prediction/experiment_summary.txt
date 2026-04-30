@@ -1,0 +1,39 @@
+CNN district prediction experiment
+
+Methodological notes:
+- The target is district-level, so this is weakly supervised district-level regression.
+- Images are never randomly split across train/test; all splits are by district_id.
+- Image-level CNN predictions are averaged by district before evaluation.
+- MIL trains directly on district bags and district-level MSE.
+
+Device: cuda
+Target column: cs_mn_avg_eb
+Images after cleaning: 7033
+Districts after cleaning: 250
+Minimum images per district: 15
+
+Metrics:
+  model split      mae     rmse        r2  pearson  n_districts
+mil_cnn train 0.355114 0.434254 -0.255980 0.218156          175
+mil_cnn   val 0.306251 0.391600  0.127327 0.453165           37
+mil_cnn  test 0.434951 0.532636 -0.452115 0.124615           38
+
+Arguments:
+{
+  "image_metadata": "outputs\\data_collection\\downloaded_images_recovered_from_files.csv",
+  "district_outcomes": "data\\sampled_districts.csv",
+  "image_root": "data\\streetview_images",
+  "target_col": "cs_mn_avg_eb",
+  "district_id_col": "district_id",
+  "output_dir": "outputs\\cnn_district_prediction",
+  "min_images_per_district": "15",
+  "epochs": "10",
+  "batch_size": "2",
+  "lr": "0.0001",
+  "model_type": "mil_cnn",
+  "bag_size": "16",
+  "freeze_backbone": "True",
+  "unfreeze_layer4": "False",
+  "random_seed": "42",
+  "num_workers": "0"
+}

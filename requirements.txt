@@ -1,4 +1,6 @@
 pandas
+geopandas
+shapely
 numpy
 torch
 torchvision
@@ -8,3 +10,6 @@ tqdm
 Pillow
 scipy
 pyarrow
+requests
+python-dotenv
+transformers

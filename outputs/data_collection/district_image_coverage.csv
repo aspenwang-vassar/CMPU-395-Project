@@ -1,0 +1,21 @@
+district_id,district_name,stateabb,num_valid_images,num_unique_panos,num_candidate_points,num_metadata_ok,num_zero_results,num_outside_district,num_duplicates,included_for_analysis
+1602550,Parma District,ID,10,0,230,10,70,0,0,False
+1603030,South Lemhi District,ID,0,0,230,0,80,0,0,False
+1713240,East Peoria SD 86,IL,23,0,230,25,55,0,0,True
+1907410,Clarke Community School District,IA,3,0,230,3,77,0,0,False
+2011880,St Francis Comm Schools,KS,2,0,230,2,78,0,0,False
+2101230,Clay County,KY,4,0,230,4,76,0,0,False
+2707590,Carlton Public School District,MN,8,0,230,9,71,0,0,False
+2725050,Onamia Public School District,MN,2,0,230,2,78,0,0,False
+2800930,Carroll County School District,MS,0,0,230,0,80,0,0,False
+3414220,Roosevelt Borough Public School District,NJ,18,0,230,18,62,0,0,True
+3904583,Mapleton Local,OH,9,0,230,9,71,0,0,False
+4213020,Lake-Lehman SD,PA,2,0,230,2,78,0,0,False
+4216860,New Hope-Solebury SD,PA,28,0,230,28,52,0,0,True
+4817880,East Chambers ISD,TX,5,0,230,5,75,0,0,False
+5500990,Belleville School District,WI,10,0,230,10,70,0,0,False
+5504620,Lac du Flambeau #1 School District,WI,15,0,230,15,65,0,0,True
+608610,Chula Vista Elementary,CA,27,0,230,27,53,0,0,True
+624480,Mendocino Unified,CA,3,0,230,3,77,0,0,False
+631170,Plumas Unified,CA,5,0,230,5,75,0,0,False
+900840,Colchester School District,CT,18,0,230,18,62,0,0,True

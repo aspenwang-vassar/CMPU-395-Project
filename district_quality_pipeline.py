@@ -48,7 +48,7 @@ class Config:
     IMAGE_METADATA_PATH = DATA_DIR / "your_image_metadata.csv"
     AUTO_GENERATE_METADATA = True
     GENERATED_METADATA_PATH = DATA_DIR / "generated_image_metadata.csv"
-    DISTRICT_OUTCOME_PATH = DATA_DIR / "sampled_districts.csv"
+    DISTRICT_OUTCOME_PATH = DATA_DIR / "seda_geodist_annualsub_cs_6.0.csv"
     IMAGE_ROOT = DATA_DIR / "streetview_images"
 
     METADATA_ID_COLUMN = "sedalea"
