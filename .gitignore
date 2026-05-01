@@ -211,6 +211,8 @@ __marimo__/
 data/reddit_raw.csv
 data/EDGE_SCHOOLDISTRICT_TL25_SY2425.shp
 data/seda_geodist_annual_cs_6.0.csv
+data/raw/seda_geodist_annual_cs_6.0.csv
+data/raw/EDGE_SCHOOLDISTRICT_TL25_SY2425.*
 
 # Large model outputs
 outputs/cnn_district_prediction/checkpoints/

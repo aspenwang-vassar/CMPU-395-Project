@@ -41,15 +41,16 @@ DEFAULT_TARGET_COLUMN = "target_score"
 class Config:
     """Editable script configuration for direct execution."""
 
-    PROJECT_ROOT = Path(__file__).parent
+    PROJECT_ROOT = Path(__file__).resolve().parents[1]
     DATA_DIR = PROJECT_ROOT / "data"
+    PROCESSED_DATA_DIR = DATA_DIR / "processed"
     OUTPUT_DIR = PROJECT_ROOT / "outputs" / "district_quality"
 
-    IMAGE_METADATA_PATH = DATA_DIR / "your_image_metadata.csv"
+    IMAGE_METADATA_PATH = PROCESSED_DATA_DIR / "generated_image_metadata.csv"
     AUTO_GENERATE_METADATA = True
-    GENERATED_METADATA_PATH = DATA_DIR / "generated_image_metadata.csv"
-    DISTRICT_OUTCOME_PATH = DATA_DIR / "seda_geodist_annualsub_cs_6.0.csv"
-    IMAGE_ROOT = DATA_DIR / "streetview_images"
+    GENERATED_METADATA_PATH = PROCESSED_DATA_DIR / "generated_image_metadata.csv"
+    DISTRICT_OUTCOME_PATH = PROCESSED_DATA_DIR / "sampled_districts.csv"
+    IMAGE_ROOT = DATA_DIR / "images" / "streetview_images"
 
     METADATA_ID_COLUMN = "sedalea"
     OUTCOME_ID_COLUMN = "sedalea"

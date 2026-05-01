@@ -14,15 +14,19 @@ Outputs:
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
 from sklearn.linear_model import RidgeCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from scipy.stats import pearsonr
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+OUTPUT_DIR = PROJECT_ROOT / "outputs" / "multimodal_model"
+
 # ── 1. Load data ─────────────────────────────────────────────────────────────
 
-embeddings = pd.read_parquet("district_features.parquet")
-sentiment  = pd.read_csv("reddit_sentiment.csv")
+embeddings = pd.read_parquet(OUTPUT_DIR / "district_features.parquet")
+sentiment  = pd.read_csv(OUTPUT_DIR / "reddit_sentiment.csv")
 
 # Normalise district_id types so we can merge
 embeddings["district_id"] = embeddings["district_id"].astype(str).str.strip()
@@ -112,7 +116,7 @@ for name, (X_tr, X_va, X_te) in [
 metrics_df = pd.DataFrame(results)[["model", "split", "MAE", "RMSE", "R2", "Pearson"]]
 metrics_df = metrics_df.round(4)
 print("\n", metrics_df.to_string(index=False))
-metrics_df.to_csv("multimodal_metrics.csv", index=False)
+metrics_df.to_csv(OUTPUT_DIR / "multimodal_metrics.csv", index=False)
 
 # ── 6. Save per-district test predictions ─────────────────────────────────────
 
@@ -121,7 +125,7 @@ pred_df = pd.DataFrame({
     "y_true":      y_te,
     "y_pred_multimodal": test_preds
 })
-pred_df.to_csv("multimodal_results.csv", index=False)
+pred_df.to_csv(OUTPUT_DIR / "multimodal_results.csv", index=False)
 
 # ── 7. Bar chart: Test-set Pearson by modality ────────────────────────────────
 
@@ -144,7 +148,7 @@ for ax, metric in zip(axes, ["Pearson", "R2"]):
 
 plt.suptitle("Unimodal vs. Multimodal — Test Set Performance", fontsize=14, y=1.01)
 plt.tight_layout()
-plt.savefig("modality_comparison.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "modality_comparison.png", dpi=150, bbox_inches="tight")
 plt.close()
 
 # ── 8. Scatter: multimodal predicted vs true (test) ──────────────────────────
@@ -159,7 +163,7 @@ ax.set_ylabel("Predicted SEDA Score")
 ax.set_title("Multimodal Model: Predicted vs. True (Test Set)")
 ax.legend()
 plt.tight_layout()
-plt.savefig("multimodal_scatter.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "multimodal_scatter.png", dpi=150, bbox_inches="tight")
 plt.close()
 
 print("\nDone. Outputs: multimodal_metrics.csv, multimodal_results.csv,")

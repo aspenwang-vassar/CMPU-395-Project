@@ -1,0 +1,286 @@
+sedalea,sedaleaname,stateabb,candidate_panoramas,download_attempts,successful_images,threshold_met
+100013.0,Trussville City,AL,29,29,29,True
+100100.0,Arab City,AL,40,40,40,True
+100120.0,Athens City,AL,34,34,34,True
+100900.0,Coosa County,AL,5,5,5,True
+102850.0,Roanoke City,AL,21,21,21,True
+400295.0,Kingman Unified School District (79598),AZ,3,3,3,False
+404230.0,Kyrene Elementary District (4267),AZ,26,26,26,True
+405530.0,Nogales Unified District (4457),AZ,1,1,1,False
+406300.0,Phoenix Elementary District (4256),AZ,40,40,40,True
+500082.0,Lawrence County School District,AR,3,3,3,False
+504740.0,County Line School District,AR,4,4,4,False
+506060.0,Camden Fairview School District,AR,8,8,8,True
+511610.0,Pocahontas School District,AR,5,5,5,True
+513530.0,Vilonia School District,AR,17,17,17,True
+600026.0,El Tejon Unified,CA,7,7,7,True
+600028.0,Temecula Valley Unified,CA,23,23,23,True
+600062.0,Oakdale Joint Unified,CA,13,13,13,True
+600065.0,Dinuba Unified,CA,15,15,15,True
+600069.0,Valley Center-Pauma Unified,CA,6,6,6,True
+601423.0,Exeter Unified,CA,4,4,4,False
+601442.0,Upper Lake Unified,CA,2,2,2,False
+604740.0,Berkeley Unified,CA,40,40,40,True
+606960.0,Caliente Union Elementary,CA,3,3,3,False
+608610.0,Chula Vista Elementary,CA,27,27,27,True
+608970.0,Cloverdale Unified,CA,3,3,3,False
+610890.0,Delano Union Elementary,CA,6,6,6,True
+613290.0,Fairfax Elementary,CA,24,24,24,True
+614070.0,Fort Bragg Unified,CA,3,3,3,False
+615150.0,Geyserville Unified,CA,3,3,3,False
+617190.0,Hillsborough City Elementary,CA,40,40,40,True
+618990.0,John Swett Unified,CA,21,21,21,True
+619590.0,Kernville Union Elementary,CA,3,3,3,False
+619890.0,Kit Carson Union Elementary,CA,12,12,12,True
+623550.0,Manchester Union Elementary,CA,3,3,3,False
+624000.0,Mark West Union Elementary,CA,23,23,23,True
+624090.0,Marysville Joint Unified,CA,8,8,8,True
+624480.0,Mendocino Unified,CA,3,3,3,False
+627780.0,Nuview Union,CA,14,14,14,True
+628710.0,Orcutt Union Elementary,CA,5,5,5,True
+631170.0,Plumas Unified,CA,5,5,5,True
+631470.0,Portola Valley Elementary,CA,31,31,31,True
+632310.0,Rescue Union Elementary,CA,23,23,23,True
+633840.0,Sacramento City Unified,CA,40,40,40,True
+635700.0,Santa Monica-Malibu Unified,CA,12,12,12,True
+636800.0,Sierra Sands Unified,CA,3,3,3,False
+637230.0,Sonora Elementary,CA,13,13,13,True
+637770.0,Springville Union Elementary,CA,1,1,1,False
+642540.0,Williams Unified,CA,1,1,1,False
+900660.0,Canterbury School District,CT,19,19,19,True
+900840.0,Colchester School District,CT,18,18,18,True
+901500.0,Essex School District,CT,36,36,36,True
+1200330.0,Collier,FL,3,3,3,False
+1201410.0,Okeechobee,FL,2,2,2,False
+1301140.0,Chickamauga City,GA,36,36,36,True
+1301470.0,Cook County,GA,5,5,5,True
+1303150.0,Jones County,GA,14,14,14,True
+1601140.0,Fruitland District,ID,5,5,5,True
+1602550.0,Parma District,ID,10,10,10,True
+1700065.0,Saunemin CCSD 438,IL,10,10,10,True
+1700102.0,Brussels CUSD 42,IL,6,6,6,True
+1703990.0,Argenta-Oreana CUSD 1,IL,6,6,6,True
+1712060.0,Delavan CUSD 703,IL,8,8,8,True
+1713240.0,East Peoria SD 86,IL,23,23,23,True
+1713500.0,Edwards County CUSD 1,IL,1,1,1,False
+1715780.0,Franklin Park SD 84,IL,40,40,40,True
+1718510.0,Havana CUSD 126,IL,7,7,7,True
+1721750.0,Lake Forest SD 67,IL,40,40,40,True
+1724480.0,Kaneland CUSD 302,IL,11,11,11,True
+1726250.0,Miller Twp CCSD 210,IL,9,9,9,True
+1727610.0,Murphysboro CUSD 186,IL,7,7,7,True
+1736750.0,South Holland SD 151,IL,40,40,40,True
+1739600.0,Tuscola CUSD 301,IL,19,19,19,True
+1740680.0,North Wamac SD 186,IL,11,11,11,True
+1741550.0,West Chicago ESD 33,IL,35,35,35,True
+1742210.0,Wheeling CCSD 21,IL,40,40,40,True
+1800900.0,Bremen Public Schools,IN,11,11,11,True
+1806570.0,Michigan City Area Schools,IN,35,35,35,True
+1809060.0,Plymouth Community School Corporation,IN,8,8,8,True
+1809180.0,Porter Township School Corporation,IN,13,13,13,True
+1809720.0,Rossville Consolidated School District,IN,10,10,10,True
+1810450.0,South Montgomery Community School Corporation,IN,1,1,1,False
+1811580.0,Twin Lakes School Corporation,IN,4,4,4,False
+1903270.0,Albia Community School District,IA,3,3,3,False
+1906660.0,Center Point-Urbana Community School District,IA,11,11,11,True
+1907410.0,Clarke Community School District,IA,3,3,3,False
+1909480.0,Dubuque Community School District,IA,11,11,11,True
+1918720.0,Marshalltown Community School District,IA,4,4,4,False
+1921840.0,Osage Community School District,IA,6,6,6,True
+1930720.0,West Bend-Mallard Community School District,IA,7,7,7,True
+2000016.0,Marysville,KS,4,4,4,False
+2005820.0,Ellinwood Public Schools,KS,3,3,3,False
+2006180.0,Fort Scott,KS,6,6,6,True
+2007020.0,Hays,KS,5,5,5,True
+2009390.0,McPherson,KS,8,8,8,True
+2009780.0,Moundridge,KS,10,10,10,True
+2009840.0,Mulvane,KS,14,14,14,True
+2009900.0,Neodesha,KS,2,2,2,False
+2011640.0,Shawnee Mission Pub Schools,KS,40,40,40,True
+2011880.0,St Francis Comm Schools,KS,2,2,2,False
+2012180.0,Shawnee Heights,KS,16,16,16,True
+2100300.0,Barren County,KY,18,18,18,True
+2101050.0,Casey County,KY,9,9,9,True
+2101230.0,Clay County,KY,4,4,4,False
+2101800.0,Fairview Independent,KY,40,40,40,True
+2104380.0,Murray Independent,KY,40,40,40,True
+2105460.0,Southgate Independent,KY,40,40,40,True
+2200240.0,City of Bogalusa School District,LA,19,19,19,True
+2200780.0,Jackson Parish,LA,4,4,4,False
+2300062.0,East Machias Public Schools,ME,2,2,2,False
+2307140.0,Kittery Public Schools,ME,24,24,24,True
+2311370.0,RSU 35/MSAD 35,ME,10,10,10,True
+2312960.0,Tremont Public Schools,ME,3,3,3,False
+2314761.0,RSU 68/MSAD 68,ME,8,8,8,True
+2508730.0,North Attleborough,MA,40,40,40,True
+2508940.0,Northbridge,MA,25,25,25,True
+2509090.0,Edgartown,MA,5,5,5,True
+2511970.0,Walpole,MA,28,28,28,True
+2604620.0,Bellaire Public Schools,MI,6,6,6,True
+2615060.0,Freeland Community School District,MI,11,11,11,True
+2617880.0,Hartford Public Schools,MI,6,6,6,True
+2620610.0,Lake City Area School District,MI,4,4,4,False
+2627660.0,Paw Paw Public School District,MI,12,12,12,True
+2636270.0,Whiteford Agricultural School District,MI,26,26,26,True
+2702640.0,Lester Prairie Public School District,MN,4,4,4,False
+2702720.0,Southland Public School District,MN,3,3,3,False
+2707470.0,Canby Public School District,MN,3,3,3,False
+2707590.0,Carlton Public School District,MN,8,8,8,True
+2709510.0,Columbia Heights Public School District,MN,40,40,40,True
+2709750.0,Crosby-Ironton Public School District,MN,2,2,2,False
+2718360.0,Lyle Public School District,MN,8,8,8,True
+2718960.0,Martin County West School District,MN,2,2,2,False
+2725050.0,Onamia Public School District,MN,2,2,2,False
+2728380.0,Pine City Public School District,MN,4,4,4,False
+2732550.0,Rush City Public School District,MN,7,7,7,True
+2800187.0,Sunflower Cty Consolidated School District,MS,2,2,2,False
+2802280.0,Jones County School District,MS,17,17,17,True
+2803090.0,Nettleton School District,MS,9,9,9,True
+2803360.0,Ocean Springs School District,MS,39,39,39,True
+2905250.0,Bloomfield R-Xiv,MO,3,3,3,False
+2908250.0,Center 58,MO,40,40,40,True
+2908320.0,Johnson County R-VII,MO,7,7,7,True
+2912600.0,Gainesville R-V,MO,3,3,3,False
+2918330.0,Leesville R-IX,MO,3,3,3,False
+2919380.0,Macks Creek R-V,MO,4,4,4,False
+2923430.0,Ozark R-VI,MO,21,21,21,True
+2925410.0,Polo R-VII,MO,2,2,2,False
+2926970.0,Cole County R-I,MO,8,8,8,True
+2927570.0,Savannah R-III,MO,7,7,7,True
+3000003.0,Cut Bank Elementary,MT,3,3,3,False
+3020670.0,Pine Creek Elementary,MT,2,2,2,False
+3020790.0,Pioneer Elementary,MT,13,13,13,True
+3100097.0,Morrill Public Schools,NE,5,5,5,True
+3103060.0,Ansley Public Schools,NE,3,3,3,False
+3171520.0,Hartington Newcastle Public Schools,NE,1,1,1,False
+3173740.0,Millard Public Schools,NE,40,40,40,True
+3175510.0,Pierce Public Schools,NE,7,7,7,True
+3200060.0,Clark County,NV,3,3,3,False
+3303540.0,Hampton Falls School District,NH,24,24,24,True
+3304030.0,Jaffrey-Rindge Cooperative School District,NH,15,15,15,True
+3304040.0,Kearsarge Regional School District,NH,6,6,6,True
+3305940.0,Rochester School District,NH,30,30,30,True
+3404200.0,East Newark School District,NJ,40,40,40,True
+3404410.0,Eatontown Public School District,NJ,40,40,40,True
+3404660.0,Elmwood Park School District,NJ,40,40,40,True
+3404710.0,Emerson Public School District,NJ,40,40,40,True
+3405520.0,Franklin Township School District,NJ,16,16,16,True
+3405880.0,Glassboro School District,NJ,39,39,39,True
+3407830.0,Jersey City Public Schools,NJ,40,40,40,True
+3407920.0,Kenilworth School District,NJ,40,40,40,True
+3409750.0,Matawan-Aberdeen Regional School District,NJ,40,40,40,True
+3411310.0,New Providence School District,NJ,40,40,40,True
+3413470.0,Prospect Park Public School District,NJ,40,40,40,True
+3414220.0,Roosevelt Borough Public School District,NJ,18,18,18,True
+3415030.0,Somers Point School District,NJ,40,40,40,True
+3416200.0,Tinton Falls School District,NJ,40,40,40,True
+3417520.0,West Milford Township Public School District,NJ,14,14,14,True
+3418240.0,Woodland Township School District,NJ,5,5,5,True
+3700530.0,Cabarrus County Schools,NC,18,18,18,True
+3701140.0,Davidson County Schools,NC,26,26,26,True
+3704320.0,Stanly County Schools,NC,14,14,14,True
+3805340.0,Drayton 19,ND,5,5,5,True
+3806930.0,Flasher 39,ND,1,1,1,False
+3812720.0,Menoken 33,ND,3,3,3,False
+3820190.0,Wishek 19,ND,2,2,2,False
+3904371.0,Canton City,OH,40,40,40,True
+3904495.0,Vandalia-Butler City,OH,29,29,29,True
+3904500.0,Warrensville Heights City,OH,40,40,40,True
+3904505.0,West Carrollton City,OH,40,40,40,True
+3904583.0,Mapleton Local,OH,9,9,9,True
+3904700.0,Reynoldsburg City,OH,40,40,40,True
+3904708.0,Pike-Delta-York Local,OH,16,16,16,True
+3904821.0,Ottawa Hills Local,OH,40,40,40,True
+3904837.0,Springfield Local,OH,18,18,18,True
+3904847.0,Buckeye Local,OH,18,18,18,True
+3904859.0,Fort Recovery Local,OH,16,16,16,True
+3904865.0,Switzerland of Ohio Local,OH,5,5,5,True
+3904928.0,Preble Shawnee Local,OH,13,13,13,True
+3905000.0,Manchester Local,OH,26,26,26,True
+3905009.0,Bloomfield-Mespo Local,OH,8,8,8,True
+3905019.0,Liberty Local,OH,29,29,29,True
+4002550.0,Agra,OK,2,2,2,False
+4014730.0,Hodgen,OK,1,1,1,False
+4021510.0,Newcastle,OK,20,20,20,True
+4021600.0,Ninnekah,OK,5,5,5,True
+4024510.0,Pioneer-Pleasant Vale,OK,6,6,6,True
+4028650.0,Stigler,OK,1,1,1,False
+4032640.0,White Rock,OK,5,5,5,True
+4100016.0,Yamhill Carlton SD 1,OR,1,1,1,False
+4110560.0,Riverdale SD 51J,OR,40,40,40,True
+4202820.0,Avonworth SD,PA,37,37,37,True
+4203240.0,Bellefonte Area SD,PA,14,14,14,True
+4203390.0,Benton Area SD,PA,8,8,8,True
+4203510.0,Bethel Park SD,PA,40,40,40,True
+4204920.0,Canton Area SD,PA,2,2,2,False
+4205700.0,Chartiers Valley SD,PA,40,40,40,True
+4206240.0,Coatesville Area SD,PA,30,30,30,True
+4206660.0,Connellsville Area SD,PA,7,7,7,True
+4208550.0,East Penn SD,PA,40,40,40,True
+4209480.0,Exeter Township SD,PA,37,37,37,True
+4212300.0,Jamestown Area SD,PA,8,8,8,True
+4212570.0,Johnsonburg Area SD,PA,6,6,6,True
+4213020.0,Lake-Lehman SD,PA,2,2,2,False
+4213320.0,Laurel Highlands SD,PA,17,17,17,True
+4213710.0,Ligonier Valley SD,PA,8,8,8,True
+4215240.0,Middletown Area SD,PA,31,31,31,True
+4215900.0,Morrisville Borough SD,PA,40,40,40,True
+4216860.0,New Hope-Solebury SD,PA,28,28,28,True
+4217280.0,North Penn SD,PA,40,40,40,True
+4221150.0,Yough SD,PA,20,20,20,True
+4222170.0,South Eastern SD,PA,16,16,16,True
+4222620.0,Springfield Township SD,PA,40,40,40,True
+4222710.0,Saint Clair Area SD,PA,8,8,8,True
+4225680.0,West Mifflin Area SD,PA,40,40,40,True
+4225950.0,Wyoming Valley West SD,PA,40,40,40,True
+4225980.0,West York Area SD,PA,31,31,31,True
+4226390.0,William Penn SD,PA,40,40,40,True
+4226850.0,York Suburban SD,PA,40,40,40,True
+4400390.0,Foster,RI,8,8,8,True
+4636150.0,Iroquois School District 02-3,SD,2,2,2,False
+4700150.0,Millington Municipal Schools,TN,22,22,22,True
+4700152.0,Arlington,TN,32,32,32,True
+4702070.0,Jackson County,TN,10,10,10,True
+4703480.0,Putnam County,TN,19,19,19,True
+4703600.0,Robertson County,TN,16,16,16,True
+4810780.0,Boling ISD,TX,6,6,6,True
+4812180.0,Burleson ISD,TX,33,33,33,True
+4817880.0,East Chambers ISD,TX,5,5,5,True
+4817960.0,Eastland ISD,TX,1,1,1,False
+4819050.0,Fannindel ISD,TX,8,8,8,True
+4820700.0,Gilmer ISD,TX,8,8,8,True
+4822500.0,Harleton ISD,TX,5,5,5,True
+4823850.0,Hughes Springs ISD,TX,11,11,11,True
+4826100.0,La Grange ISD,TX,10,10,10,True
+4826220.0,Lapoynor ISD,TX,5,5,5,True
+4828380.0,Lovejoy ISD,TX,40,40,40,True
+4829370.0,Matagorda ISD,TX,9,9,9,True
+4830030.0,Medina ISD,TX,2,2,2,False
+4832370.0,New Braunfels ISD,TX,22,22,22,True
+4833240.0,Nueces Canyon CISD,TX,1,1,1,False
+4836240.0,Quinlan ISD,TX,12,12,12,True
+4836360.0,Rains ISD,TX,9,9,9,True
+4837740.0,Roma ISD,TX,3,3,3,False
+4840110.0,Shiner ISD,TX,4,4,4,False
+4845180.0,West Sabine ISD,TX,9,9,9,True
+4846530.0,Wylie ISD,TX,35,35,35,True
+4846650.0,Yorktown ISD,TX,3,3,3,False
+4900060.0,Beaver District,UT,1,1,1,False
+4900900.0,San Juan District,UT,1,1,1,False
+5300840.0,Cape Flattery School District,WA,1,1,1,False
+5302940.0,Franklin Pierce School District,WA,40,40,40,True
+5304740.0,Manson School District,WA,1,1,1,False
+5307770.0,Selah School District,WA,4,4,4,False
+5309330.0,Wahkiakum School District,WA,1,1,1,False
+5500990.0,Belleville School District,WI,10,10,10,True
+5501110.0,Benton School District,WI,9,9,9,True
+5501350.0,Bloomer School District,WI,8,8,8,True
+5503240.0,De Soto Area School District,WI,9,9,9,True
+5504620.0,Lac du Flambeau #1 School District,WI,15,15,15,True
+5505250.0,Gillett School District,WI,7,7,7,True
+5507560.0,La Farge School District,WI,11,11,11,True
+5508190.0,Lodi School District,WI,10,10,10,True
+5510500.0,New Glarus School District,WI,11,11,11,True
+5511850.0,Platteville School District,WI,10,10,10,True
+5514640.0,Sun Prairie Area School District,WI,28,28,28,True
+5514940.0,Tomahawk School District,WI,3,3,3,False

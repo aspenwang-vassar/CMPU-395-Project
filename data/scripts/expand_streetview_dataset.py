@@ -62,17 +62,18 @@ except ImportError:  # pragma: no cover - handled with a clearer runtime error
     prep = None
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_ROOT / "data"
+PROCESSED_DATA_DIR = DATA_DIR / "processed"
 OUTPUT_DIR = PROJECT_ROOT / "outputs" / "data_collection"
-IMAGE_DIR = DATA_DIR / "streetview_images"
+IMAGE_DIR = DATA_DIR / "images" / "streetview_images"
 
-DEFAULT_BOUNDARIES = DATA_DIR / "preprocessed_data.geojson"
-DEFAULT_SEDA = DATA_DIR / "sampled_districts.csv"
-LEGACY_DOWNLOADED = DATA_DIR / "downloaded_images.csv"
-LEGACY_GENERATED_METADATA = DATA_DIR / "generated_image_metadata.csv"
-LEGACY_STREETVIEW_METADATA = DATA_DIR / "street_view_metadata.csv"
-LEGACY_COVERAGE = DATA_DIR / "district_image_coverage.csv"
+DEFAULT_BOUNDARIES = PROCESSED_DATA_DIR / "preprocessed_data.geojson"
+DEFAULT_SEDA = PROCESSED_DATA_DIR / "sampled_districts.csv"
+LEGACY_DOWNLOADED = PROCESSED_DATA_DIR / "downloaded_images.csv"
+LEGACY_GENERATED_METADATA = PROCESSED_DATA_DIR / "generated_image_metadata.csv"
+LEGACY_STREETVIEW_METADATA = PROCESSED_DATA_DIR / "street_view_metadata.csv"
+LEGACY_COVERAGE = PROCESSED_DATA_DIR / "district_image_coverage.csv"
 
 DOWNLOADED_IMAGES = OUTPUT_DIR / "downloaded_images.csv"
 METADATA_CACHE = OUTPUT_DIR / "metadata_cache.csv"

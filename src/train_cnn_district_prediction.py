@@ -867,8 +867,8 @@ def split_metadata(metadata_df: pd.DataFrame, split_df: pd.DataFrame) -> dict[st
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Train district-level CNN models from Street View images.")
     parser.add_argument("--image-metadata", type=Path, default=Path("outputs/data_collection/downloaded_images.csv"))
-    parser.add_argument("--district-outcomes", type=Path, default=Path("data/sampled_districts.csv"))
-    parser.add_argument("--image-root", type=Path, default=Path("data/streetview_images"))
+    parser.add_argument("--district-outcomes", type=Path, default=Path("data/processed/sampled_districts.csv"))
+    parser.add_argument("--image-root", type=Path, default=Path("data/images/streetview_images"))
     parser.add_argument("--target-col", default="cs_mn_avg_eb")
     parser.add_argument("--district-id-col", default="district_id")
     parser.add_argument("--output-dir", type=Path, default=Path("outputs/cnn_district_prediction"))
