@@ -13,7 +13,7 @@ This pipeline:
 from __future__ import annotations
 
 import logging
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Iterable, Optional
 
 import matplotlib.pyplot as plt
@@ -119,11 +119,24 @@ def resolve_image_path(raw_path: str, image_root: Optional[Path], metadata_path:
     path = Path(raw_path)
     if path.is_absolute():
         return path
+    windows_name = PureWindowsPath(raw_path).name
     if image_root is not None:
         candidate = image_root / path
         if candidate.exists():
             return candidate.resolve()
+        candidate = image_root / path.name
+        if candidate.exists():
+            return candidate.resolve()
+        candidate = image_root / windows_name
+        if candidate.exists():
+            return candidate.resolve()
     candidate = metadata_path.parent / path
+    if candidate.exists():
+        return candidate.resolve()
+    candidate = metadata_path.parent / path.name
+    if candidate.exists():
+        return candidate.resolve()
+    candidate = metadata_path.parent / windows_name
     if candidate.exists():
         return candidate.resolve()
     return path.resolve()
