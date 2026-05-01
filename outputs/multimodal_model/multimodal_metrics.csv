@@ -1,0 +1,10 @@
+model,split,MAE,RMSE,R2,Pearson
+CNN only,Train,0.1197,0.1435,0.9005,0.9747
+CNN only,Val,0.3568,0.4294,0.1557,0.5158
+CNN only,Test,0.3586,0.463,-0.1206,0.1354
+NLP only,Train,0.3723,0.4549,0.0003,0.1567
+NLP only,Val,0.4045,0.4699,-0.0109,-0.1761
+NLP only,Test,0.3713,0.4424,-0.0228,0.2579
+Multimodal,Train,0.1195,0.1433,0.9007,0.9747
+Multimodal,Val,0.3575,0.43,0.1535,0.5134
+Multimodal,Test,0.3591,0.4628,-0.1194,0.1385
